@@ -86,6 +86,7 @@
         /*
         COMPROBAR DE TRES FORMAS DIFERENTES , CON LA ESTRUCTURA IF , SI EL NÚMERO ALEATORIO TIENE 1, 2 O 3 DÍGITOS
         */
+        
     $num_aleatorio = rand(1,200);
     $digitos = null; //Creamos una variable que nos diga si tiene uno , dos o tres dígitos, para que el código sea más eficiente
     if($num_aleatorio > 0 and $num_aleatorio < 10) {
@@ -102,6 +103,14 @@
 
     echo "<p>El número $numero_aleatorio tiene $digitos digitos</p>";
 
+    //VERSION CON MATCH
+    $digitos = match (true){ //
+        $num_aleatorio >= 1 && $num_aleatorio <=9 =>1,
+        $num_aleatorio >= 10 && $num_aleatorio <=99 => 2,
+        $num_aleatorio >= 100 && $num_aleatorio <= 999 => 3,
+        default => "ERROR"
+    };
+    echo "<h1>El numero tiene $digitos digitos</h3>";
         $n= rand(1,3);
 
         switch($n){  //Hay que poner siempre el break, porque puede entrar en la primera opción , aunque no lo coja
@@ -115,6 +124,13 @@
             echo " El número es 3";
 
         }
+        
+        $resultado = match($n){
+            1 => "El número es 1",
+            2 => "El número es 2",
+            3 => "El número es 3"
+        };
+        echo "<h3>$resultado</h3>";
 
     ?>
 </body>

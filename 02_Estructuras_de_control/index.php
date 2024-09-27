@@ -31,6 +31,15 @@
                 <td>
                     Ejercicios de fechas con la función date().
                 </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="Ejercicios.php">Ejercicios.php</a>
+                </td>
+                <td>
+                    Ejercicios.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

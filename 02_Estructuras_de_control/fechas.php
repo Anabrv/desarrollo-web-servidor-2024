@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <?php
+        error_reporting(E_ALL);
+        ini_set("display_errors",1);
+    ?>
 </head>
 <body>
     <?php
@@ -67,10 +71,28 @@
         case "Friday":
             break;
         default:
-            echo "<p>Hoy es  $dia y no hay clase</p>";
+            echo "<p>Ho
+            y es $dia y no hay clase</p>";
     }
+    // Con un estructura switch lo más optima posible  
+    //Reescribir el switch de los diás de clase con la variable en español
+        
+    $dia= date("l");
+    $dia_espanol = null;
+
+    $dia_espanol= match($dia) { // Comprueba si valor dia es igual a monday, si lo es lo cambia por lunes (con el comando (l) los días salen en inglés)
+        "Monday" => "Lunes",
+        "Tuesday" => "Martes",
+        "Wednesday" => "Miércoles",
+        "Thursday" => "Jueves",
+        "Friday" => "Viernes",
+        "Saturday" => "Sábado",
+        "Sunday" => "Domingo"
+    };
+        echo " $dia_espanol "
     ?>
        
         
+
 </body>
 </html>
