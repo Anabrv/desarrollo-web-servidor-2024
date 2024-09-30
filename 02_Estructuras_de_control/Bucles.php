@@ -29,5 +29,29 @@
         echo "</ul>";
     ?>
 
+        <h1>LISTA CON FOR</h1>
+        <?php
+        
+        echo "<ul>";
+        for ($i = 1; $i <= 10; $i++):
+            echo "<li>$i</li>";
+        endfor;
+
+        echo"</ul>";
+    
+        ?>
+        <h3>For con break cursed</h3>
+        <?php
+        echo "<ul>";
+        for($i= 1; ; $i++){ // (; ;) otra opción   , código ofuscado , se utiliza para hacer virus
+            if($i > 10){
+                break;
+            }
+            echo "<li>$i</li>";
+        }
+        echo "</ul>";
+        
+        ?>
+
 </body>
 </html>
