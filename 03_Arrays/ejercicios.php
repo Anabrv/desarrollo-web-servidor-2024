@@ -77,11 +77,22 @@
         </thead>
         <tbody>
             <?php
-                foreach($alumnos as $nombre => $notas) {
-                    if($notas < 5){
-                        
-                    }
-                    ?>
+                foreach($alumnos as $nombre => $notas) { ?>
+
+                   <?php if($notas < 5){ ?>
+                        <td class="rojo"><?php echo "Suspenso" ?></td>
+                   <?php }
+                        else if($notas >= 5 and $notas <= 6){ ?>
+                        <td class="verde"><?php echo "Aprobado" ?></td>
+                        <?php } 
+                        else if($notas > 6 and $notas <= 8) { ?>
+                        <td class="verde"><?php echo "Notable"?></td>
+                    <?php }
+                        else{ ?>
+                        <td class="dorado"><?php echo "Sobresaliente"?></td>
+                   <?php }?>
+
+                    
                 <tr>
                     
             <?php } ?>
