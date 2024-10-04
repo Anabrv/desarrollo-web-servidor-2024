@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <?php 
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+    ?>
+    <link href="estilos.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- EJERCICIO 1
-     
+        clave                                 contenido
         Desarrollo web en entorno servidor => Alejandra
         Desarollo web en entorno cliente => Jose Miguel
         Diseño de interfaces web => Jaime
@@ -29,7 +33,7 @@
 
         ];
     ?>
-    <table>
+    <table border="2">
         <thead>
             <tr>
                 <th>ASIGNATURA</th>
@@ -38,11 +42,16 @@
         </thead>
         <tbody>
             <?php
-                foreach($profesores as $asignatura => $profesor) {?>
-                <tr>
-                    <td><?php echo $asignatura ?></td>
-                    <td><?php echo $profesor ?></td>
-            <?php } ?>
+            //sort ordena no asociativamente 
+            // asort ordena de forma asociativa
+            //ksort
+            krsort($profesores);
+                foreach($profesores as $asignatura => $profesor) {
+                    echo "<tr>";
+                    echo "<td>$asignatura</td>";
+                    echo "<td>$profesor </td>";
+                    echo "</tr>";
+             } ?>
         </tbody>
     </table>
         <!-- EJERCICIO 2
@@ -58,6 +67,7 @@
          -COLUMNA 3: SI NOTA < 5 , SUSPENSO , ELSE, APROBADO
 
         -->
+         <br><br>
         <?php 
             $alumnos =[
                 "Francisco" => "3",
@@ -67,36 +77,51 @@
                 "Samuel" => "9",
             ];
         ?>
-        <table>
+        <table class="tabla">
         <thead>
             <tr>
                 <th>ALUMNO</th>
                 <th>NOTA</th>
-                <th></th>
+                <th>CALIFICACIÓN</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-                foreach($alumnos as $nombre => $notas) { ?>
+        
+        <?php
+            
+                foreach($alumnos as $nombre => $nota) { 
 
-                   <?php if($notas < 5){ ?>
-                        <td class="rojo"><?php echo "Suspenso" ?></td>
-                   <?php }
-                        else if($notas >= 5 and $notas <= 6){ ?>
-                        <td class="verde"><?php echo "Aprobado" ?></td>
-                        <?php } 
-                        else if($notas > 6 and $notas <= 8) { ?>
-                        <td class="verde"><?php echo "Notable"?></td>
-                    <?php }
-                        else{ ?>
-                        <td class="dorado"><?php echo "Sobresaliente"?></td>
-                   <?php }?>
+                   /*  if($nota < 5) echo "<tr class='suspenso >";
+                    else echo "<tr class='aprobado'>"; */
 
+                    ?>
+                    <tr class ="<?php 
+                    if($nota < 5) echo "suspenso"; else echo "aprobado"; ?>">
                     
-                <tr>
+                     
                     
-            <?php } ?>
+                    <td><?php echo $nombre?></td>
+                    <td><?php echo $nota?></td>
+                        <td>
+                            <?php
+                            if($nota < 5) echo "Supenso";
+                            else echo "Aprobado";
+
+                            ?>
+                        </td>
+                    </tr>
+                    <?php } ?>
+
         </tbody>
     </table>
 </body>
 </html>
+
+
+<!-- Insertar dos nuevos estudiantes. con notas aleatorias entre 0 y 10
+ 
+    borrar un estudiante (el que peor os caiga) por la clave
+    
+    Mostrar en una nueva tabla todo ordenado por los nombres en orden alfabeticamente inverso
+    
+    Mostrar en una nueva tabla toso ordenado por la nota de 10 a 0 (orden inverso)-->
