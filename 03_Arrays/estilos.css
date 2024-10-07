@@ -1,12 +1,15 @@
-.rojo{
-    background-color: red;
+table{
+    border: 2px solid purple;
+
 }
-.verde{
-    background-color: green;
+th,td{
+    border: 2px solid palevioletred;
 }
-.dorado{
-    background-color: goldenrod;
+caption{
+    border: 2px solid pink;
 }
+
+
 .suspenso{
     background-color: red;
 }

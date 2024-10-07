@@ -33,7 +33,7 @@
 
         ];
     ?>
-    <table border="2">
+    <table>
         <thead>
             <tr>
                 <th>ASIGNATURA</th>
@@ -125,3 +125,55 @@
     Mostrar en una nueva tabla todo ordenado por los nombres en orden alfabeticamente inverso
     
     Mostrar en una nueva tabla toso ordenado por la nota de 10 a 0 (orden inverso)-->
+
+    <?php
+    //INSERTAR DOS ESTUDIANTES
+
+        $alumnos["Paula"] = rand(0,10);
+        $alumnos["Waluis"] = rand(0,10);
+
+//BORRAR ESTUDIANTE
+
+        unset($alumnos["Vicente"]); 
+    
+        krsort($alumnos); //Por clave
+
+    ?>
+    <table>
+        <caption>Estudiantes ordenados por el nombre al revés</caption>
+        <thead>
+            <tr>
+                <th>Estudiante</th>
+                <th>Nota</th>
+            </tr>
+
+            <tbody>
+        
+        <?php
+            
+                foreach($alumnos as $nombre => $nota) { 
+
+                   /*  if($nota < 5) echo "<tr class='suspenso >";
+                    else echo "<tr class='aprobado'>"; */
+
+                    ?>
+                    <tr class ="<?php 
+                    if($nota < 5) echo "suspenso"; else echo "aprobado"; ?>">
+                    
+                     
+                    
+                    <td><?php echo $nombre?></td>
+                    <td><?php echo $nota?></td>
+                        <td>
+                            <?php
+                            if($nota < 5) echo "Supenso";
+                            else echo "Aprobado";
+
+                            ?>
+                        </td>
+                    </tr>
+                    <?php } ?>
+
+        </tbody>
+        </thead>
+    </table> 
