@@ -37,6 +37,23 @@
         - 3 TÍTULO (TODO ALFABÉTICAMENTE, Y EL AÑO DE MÁS RECIENTE A MÁS ANTIGUO)
         
         */
+
+
+        for($i = 0 ; $i < count($peliculas) ; $i++ ){ 
+            $peliculas[$i][3] = rand (30, 240);
+
+            if($peliculas[$i][3] < 60) $peliculas[$i][4] = "CORTOMETRAJE";
+            else $peliculas[$i][4] = "LARGOMETRAJE";
+        }
+        /* El count va entre paréntesis porque es una función,  */
+        $_titulo = array_column($peliculas,0);
+        $_genero = array_column($peliculas,1);
+        $_anno = array_column($peliculas,2);
+
+        array_multisort($_genero,SORT_ASC,
+        $_anno, SORT_DESC,
+        $_titulo, SORT_ASC,
+        $peliculas);
     ?>
     <table>
         <caption>
@@ -47,17 +64,20 @@
                 <th>Título</th>
                 <th>Género</th>
                 <th>Estreno</th>
+                <th>Duración</th>
             </tr>
         </thead>
         <tbody>
             <?php
                 foreach($peliculas as $pelicula){
                     //es un array del array 
-                    list($titulo,$genero,$estreno) = $pelicula; ?>
+                    list($titulo,$genero,$estreno,$anno,$tipo) = $pelicula; ?>
                     <tr>
                         <td><?php echo $titulo?></td>
                         <td><?php echo $genero?></td>
-                        <td><?php echo $estreno?></td>
+                        <td><?php echo $anno?></td>
+                        <td><?php echo $duracion?></td>
+                        <td><?php echo $tipo ?></td>
                     </tr>
                    <!-- /*  echo "<tr>";
                     echo "<td>$titulo</td>";
