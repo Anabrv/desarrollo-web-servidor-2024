@@ -24,6 +24,7 @@
       2 X 2 = 4
       ...
       -->
+      <br><br>
       <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $numero = $_POST["numero"];
@@ -33,19 +34,19 @@
                 <thead>
                     <tr>
                         <th>Número</th>
-                        <th>x</th>
-                        <th>Número</th>
                         <th>Resultado</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
     
     <?php
-            for ($i=1; $i <= 5; $i++) { 
+            for ($i=1; $i <= 10; $i++) { 
                 $result= $numero * $i;
                 echo "<tr>";
-                echo "<td>$numero x $i = $result </td>";
-                echo "</td>";
+                echo "<td>$numero x $i = </td>";
+                echo "<td> $result </td>";
+                echo "</tr>";
             }
            
         }
