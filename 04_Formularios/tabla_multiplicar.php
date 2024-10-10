@@ -41,7 +41,7 @@
                 <tbody>
     
     <?php
-            for ($i=1; $i <= 10; $i++) { 
+            for ($i=1; $i <= 5; $i++) { 
                 $result= $numero * $i;
                 echo "<tr>";
                 echo "<td>$numero x $i = $result </td>";
