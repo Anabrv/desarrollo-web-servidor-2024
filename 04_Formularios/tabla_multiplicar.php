@@ -28,12 +28,24 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $numero = $_POST["numero"];
             $result = 0;
-            
+            ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>x</th>
+                        <th>Número</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+    <?php
             for ($i=1; $i <= 10; $i++) { 
                 $result= $numero * $i;
-                 
-                echo "<p>$numero x $i = $result </p>";
-               
+                echo "<tr>";
+                echo "<td>$numero x $i = $result </td>";
+                echo "</td>";
             }
            
         }
@@ -41,7 +53,8 @@
       
       
       ?>
-      
+                </tbody>
+        </table>
 
 </body>
 </html>
