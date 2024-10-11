@@ -41,9 +41,9 @@ SUPERREDUCIDO = 4%
 
         /* lo almacena en pvp */
         $pvp = match($iva){
-            "general"  => 1.21 * GENERAL,
-            "reducido" => 1.1 * REDUCIDO,
-            "superreducido" => 0.4 * SUPERREDUCIDO,
+            "general"  => $PRECIO * GENERAL,
+            "reducido" => $PRECIO * REDUCIDO,
+            "superreducido" => $PRECIO * SUPERREDUCIDO,
         };
         echo "<p>El PVP es $pvp</p>";
     }
