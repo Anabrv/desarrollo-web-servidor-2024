@@ -20,7 +20,7 @@
         $dia_espanol=null;
         $mes= date("n");
 
-
+/* Se puede poner para evitar un if largo */
         $dia= match($dia) { 
             "Monday" => "Lunes",
             "Tuesday" => "Martes",
