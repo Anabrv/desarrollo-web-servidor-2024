@@ -88,6 +88,7 @@
         */
         
     $num_aleatorio = rand(1,200);
+    
     $digitos = null; //Creamos una variable que nos diga si tiene uno , dos o tres dígitos, para que el código sea más eficiente
     if($num_aleatorio > 0 and $num_aleatorio < 10) {
         $digitos= 1;
