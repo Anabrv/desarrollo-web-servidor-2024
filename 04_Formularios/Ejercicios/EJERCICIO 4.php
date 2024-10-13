@@ -4,31 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <?php
+        error_reporting(E_ALL);
+        ini_set("display_errors",1);
+    ?>
 </head>
 <body>
     <form action="" method="post">
-        <label for="num">Grados</label>
-        <input type="text" name="num" id="num" placeholder="Introduzca los grados">
+        <label for="grados">Grados</label>
+        <input type="text" name="grados" id="grados" placeholder="Introduzca los grados">
         <br>
-        <select name = "options1">
-        <option value="celsius">Celsius</option>
-        <option value="fahrenheit">Fahrenheit</option>
-        <option value ="kelvin">Kelvin</option>
+        <select name = "salida1">
+            <option value="celsius">Celsius</option>
+            <option value="farenheit">Farenheit</option>
+            <option value ="kelvin">Kelvin</option>
         </select>
         
-        <select name = "options2">
-        <option value="celsius2">Celsius</option>
-        <option value="fahrenheit2">Fahrenheit</option>
-        <option value ="kelvin2">Kelvin</option>
+        <select name = "salida2">
+            <option value="celsius">Celsius</option>
+            <option value="farenheit">Farenheit</option>
+            <option value ="kelvin">Kelvin</option>
         </select>
+        <br>
         <input type="submit" value="Convertir">
     </form>
 
     <?php
-        if($_REQUEST["REQUESTED_METHOD"] == "POST"){
-            $num = $_POST["num"];
-            
+    /* Funciones para realizar las operaciones */
+        function cel_a_far($num){
+            $num = ($num * 1.8 ) + 32;
+            return $num;
+        }
+        function far_a_cel($num){
+            $num = ($num -32) * 5 / 9;
+            return $num;
+        }
+        function cel_a_kel($num){
+            $num = $num + 273.15;
+            return $num;
+        }
+        function kel_a_cel($num){
+            $num = $num - 273.15;
+            return $num;
+        }
+        function kel_a_far($num){
+            $num = ($num -273.15)* 9/5 + 32 ;
+            return $num;
+        }
+        function far_a_kel($num){
+            $num = ($num - 32) * 5/9 +273.15;
+            return $num;
+        }
 
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $grados = $_POST["grados"];
+            $salida1 = $_POST["salida1"];
+            $salida2 = $_POST["salida2"];
+
+           
+
+            /* Comparacion */
+            $result = match([$salida1,$salida2]) {
+                ["celsius","farenheit"] => cel_a_far($grados),
+                ["farenheit","celsius"] => far_a_cel($grados),
+                ["celsius","kelvin"] => cel_a_kel($grados),
+                ["kelvin","celsius"] => kel_a_cel($grados),
+                ["farenheit","kelvin"] => far_a_kel($grados),
+                ["kelvin","farenheit"] => kel_a_far($grados)
+            };
+            
+            echo "<p>La temperatura es $result</p>";
         }
     
     

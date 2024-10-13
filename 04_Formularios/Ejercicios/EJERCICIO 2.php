@@ -11,15 +11,17 @@
     ?>
 </head>
 <body>
-    <form>
+    <form action="" method="post">
         <label for="a">Número 1</label>
-        <input type="text" name="a" id="a" placeholder="a">
+        <input type="text" name="a" id="a" placeholder="numero 1">
         <br><br>
         <label for="b">Número 2</label>
-        <input type="text" name="b" id="b" placeholder="b">
+        <input type="text" name="b" id="b" placeholder="numero 2">
         <br><br>
         <label for="c">Número 3</label>
-        <input type="text" name="c" id="c" placeholder="c">
+        <input type="text" name="c" id="c" placeholder="numero 3">
+        <br>
+        <input type="submit" value="Comprobar">
     </form>
 
     <?php
@@ -31,10 +33,10 @@
 
         for($i= $a; $i <= $b ; $i++){
             if($i % $c == 0){
-                $result .= $i.",";
+                $result .= $i.","; /* concatenar en php */
             }
          }
-         echo "<p>$result<p>";
+         echo "<p>Los múltiplos de $c entre $a y $b son $result <p>";
         }
     ?>
     
