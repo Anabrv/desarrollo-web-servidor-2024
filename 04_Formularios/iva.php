@@ -37,7 +37,7 @@ SUPERREDUCIDO = 4%
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $PRECIO = $_POST["precio"];
-        $IVA = $_POST["iva"];
+        $iva = $_POST["iva"];
 
         /* lo almacena en pvp */
         $pvp = match($iva){
