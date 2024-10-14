@@ -33,7 +33,9 @@
 
         for($i= $a; $i <= $b ; $i++){
             if($i % $c == 0){
+                /* echo <p>$i</p> */
                 $result .= $i.","; /* concatenar en php */
+
             }
          }
          echo "<p>Los múltiplos de $c entre $a y $b son $result <p>";

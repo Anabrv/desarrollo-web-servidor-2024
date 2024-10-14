@@ -48,6 +48,16 @@
     }
 
 
+    /* Otra opcion
+        $max = $numero1;
+        if($numero2 > $max){
+            $max =$numero2;
+        }
+        if($numero3 >$max){
+            $max = $numero3
+        }
+    */
+
 
 
 

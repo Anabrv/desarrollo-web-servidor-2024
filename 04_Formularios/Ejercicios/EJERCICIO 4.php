@@ -61,8 +61,6 @@
             $salida1 = $_POST["salida1"];
             $salida2 = $_POST["salida2"];
 
-           
-
             /* Comparacion */
             $result = match([$salida1,$salida2]) {
                 ["celsius","farenheit"] => cel_a_far($grados),
@@ -74,6 +72,31 @@
             };
             
             echo "<p>La temperatura es $result</p>";
+
+       /*  $gradosFinal= $grados; //si no entra en ingún caso se queda igual
+        if($salida1 == "Celsius"){
+            if($salida1== "Kelvin" ){
+        
+            }elseif($fsalida2 =="Farenheit"){
+            
+            }
+        elseif ($salida1 == "Kelvin"){
+            if($salida2 == "Celsius"){
+
+            }
+            elseif($salida == "Farenheit"){
+
+            }
+        }elseif($salida1 == "Farenheit"){
+            if($salida2 == "Celsius"){
+
+            }
+            elseif($salida2 == "Kelvin"){
+
+            
+            }
+        
+    }  */
         }
     
     
