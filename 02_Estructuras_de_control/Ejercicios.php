@@ -11,6 +11,18 @@
 </head>
 <body>
     <!-- EJERCICIOS 1 : CALCULAR LA SUMA DE TODOS LOS NÚMEROS PARES DEL 1 AL 20 -->
+     <h1>Ejercicio 1</h1>
+     <?php
+     echo"<ul>";
+        $num = 0;
+        for ($i=1; $i <= 20; $i++) { 
+            if($i % 2 == 0){
+                $num += $i;
+                echo"<li>$num</li>";
+            }
+        }     
+        echo"</ul>";
+     ?>
 
     <!-- EJERCICIO 2: MONSTRAR LA FECHA ACTUAL CON EL SIGUIENTE FORMATO:
         Viernes 27 de Septiembre de 2024 
@@ -68,8 +80,9 @@
      ?>
      </ul>
      <h3>Ejercicio 3</h3>
-<!-- EJERCICIO 2: CALCULAR LA SUMA DE LOS PARES ENTRE 1 Y 20 -->
+<!-- EJERCICIO 3: CALCULAR LA SUMA DE LOS PARES ENTRE 1 Y 20 -->
      <?php
+        $suma = 0;
         $i = 1;
         while($i <= 20){
             if($i %2 == 0){
@@ -93,14 +106,14 @@
         <?php
 
         $i = 1;
-        $factorial = 1;
+        $factorial = 6;
         $resultado= 1; 
 
         while( $i <= $factorial){
-            $resultdo *= $i;
+            $resultado *= $i;
             $i++;
         }
-        echo ""
+        echo "<p>$resultado</p>";
         
         ?>
         <h3>EJERCICIO 5</3>

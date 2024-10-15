@@ -19,15 +19,8 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $num1 = $_POST["num1"];
             $num2 = $_POST["num2"];
-           
-          /*   for($i = $num1 ; $i <= $num2 ; $i++){
-                if($num % $i == 0){
-                    break;
-                }
-            }
-            echo "<p>Los numeros primos son $num</p>"; */
             
-        $num= 2;
+        $num= 2; // empieza en 2 porque 1 no puede ser un numero primo
         
         echo "<ul>";
         
@@ -36,7 +29,7 @@
             for ($j=2; $j < $i/2; $j++) {  // Se pone el /2 para que haga menos comparaciones ya que si el resultado de la division es menor de 2 no es primo
                 if ($num % $j==0) { //Si el numero al dividirlo entre los cocientes de i da 0
                      $esPrimo = false;
-                     break; //porque ya sabemos 
+                     break; 
                 } 
                 /*  */
              } 

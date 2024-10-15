@@ -37,7 +37,7 @@ echo "<br><br>";
     ];
     //print_r($animales);
 
-    echo "<p>". $animales["A03"] . "</p>"; //
+    /* echo "<p>". $animales["A03"] . "</p>"; // */
     $animales[2]= "Koala";
     $animales[6] = "Iguana";
     $animales["A01"] = "Elefante";
@@ -45,7 +45,8 @@ echo "<br><br>";
     $animales[]= "Ganso"; //Sin corchetes es igual que el array push, añade sin clve.
     unset($animales[1]); //Eliminamos al gato 
 
-    $animales = array_values($animales);
+    
+    $animales = array_values($animales); //Devuelve todos los valores de un array
     $cantidad_animales = count($animales); // cuenta los animales que hay en el array, no cuenta las posiciones vacías
     echo "<h3>Hay $cantidad_animales animales </h3>";
     //print_r($animales); //Para imprimir un array 
@@ -53,7 +54,7 @@ echo "<br><br>";
     //RECORRER EL ARRAY
     echo "<h3>RECORRER ARRAY CON FOR</h3>";
     echo"<ol>";
-    for ($i=0; $i < count($animales); $i++) { 
+    for ($i=0; $i < count($animales); $i++) {  //El count equivale al length
         echo"<li>".$animales[$i] ."</li>";
     } 
     echo "</ol>";
@@ -90,7 +91,7 @@ echo "<br><br>";
         "1122 FFF" => "Mercedes CLR",
         "4531 HTJ" => "Fiat Bravo",
     ];
-    $coches["666 KKK"] = "Seat Ibiza";
+    $coches["666 KKK"] = "Seat Ibiza"; // en la clave [ 666 kkk] = se mete el valor Seat Ibiza
     $coches["7129 YHT"] = "Fiat Multipla";
     $coches[] = "Peugeot"; //tambien se puede hacer array push
     unset($coches["0"]); // Es cero porque es el valor que tiene el peugeot en mi array
@@ -109,7 +110,7 @@ echo "<br><br>";
 
     echo "<h3>FOR EACH CON CLAVE</H3>";
     echo"<ol>";
-    foreach ($coches as $matricula => $coche) {   // matricula es una variable temporal que da nombre al valor de la clave 
+    foreach ($coches as $matricula => $coche) {   // matricula es variable que se crea para la clave y seniala => a al valor
        echo "<li>$matricula, $coche</li>";
     }
     echo "</ol>";
