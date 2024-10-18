@@ -34,11 +34,13 @@ SUPERREDUCIDO = 4%
     </select>
     <br><br>
     <input type="submit" value="Calcular">
+    </form>
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $PRECIO = $_POST["precio"];
         $iva = $_POST["iva"];
 
+        if($PRECIO != '' and $iva != ''){
         /* lo almacena en pvp */
         $pvp = match($iva){
             "general"  => $PRECIO * GENERAL,
@@ -46,10 +48,16 @@ SUPERREDUCIDO = 4%
             "superreducido" => $PRECIO * SUPERREDUCIDO,
         };
         echo "<p>El PVP es $pvp</p>";
+    }else {
+        echo"te falta php";
     }
 
+    }
+
+//CREAR UNA COPIA DE IRPF.PHP CON GET EN VEZ DE POST Y CONTROLAR LOS ERRORES DE ENVIAR FORMULARIO VACIO
+ //CONTROLAR EN TODOS LOS DEMAS FORMULARIOS CON POST , QUE SI SE MANDAN UN MENSAJE VACIO SE MUESTRE UN MENSAJE
 
 ?>
-</form>
+
 </body>
 </html>

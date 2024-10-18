@@ -89,7 +89,7 @@
         "Saturday" => "Sábado",
         "Sunday" => "Domingo"
     };
-        echo " $dia_espanol "
+        echo " $dia_espanol ";
     ?>
        
         
