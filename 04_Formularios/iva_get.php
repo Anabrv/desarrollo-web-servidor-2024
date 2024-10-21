@@ -35,10 +35,10 @@
        $PRECIO = $_POST["precio"];
        $iva = $_POST["iva"];
 
-  /*  var_dump($PRECIO);
-   var_dump($iva); */
+        /*  var_dump($PRECIO);
+         var_dump($iva); */
 
-   if($PRECIO != ''and $iva !=''){ // si precio es diferene a vacio y iva es diferente a vacio , ejecuta
+        if($PRECIO != ''and $iva !=''){ // si precio es diferene a vacio y iva es diferente a vacio , ejecuta
 
        /* lo almacena en pvp */
        $pvp = match($iva){
@@ -48,11 +48,12 @@
        };
        echo "<p>El PVP es $pvp</p>";
 
-   }   else {
+        }   
+        else {
        echo"<p>te falta un dato</p>";
-   }
-
-   }
+        }
+    }
+   
     
 
 
