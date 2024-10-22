@@ -1,5 +1,5 @@
 <?php
-function tablaMultiplicar(){
+function tablaMultiplicar($numero){
     $result = 0;
     ?>
     <table>

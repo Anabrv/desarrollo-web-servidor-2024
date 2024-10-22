@@ -7,7 +7,8 @@
 </head>
 <body>
     <form action="" method="post">
-        <input type="number" name="salario" placeholder="Salario">
+        <label for="salario">Salario</label>
+        <input type="number" name="salario" id="salario" placeholder="Salario">
         <input type="submit" value="Calcular salario bruto">
     </form>
     <?php
