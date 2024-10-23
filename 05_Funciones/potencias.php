@@ -5,7 +5,7 @@ function calcularPotencia($base, $exponente){
                $resultado= $resultado *$base;
               
             } 
-            echo "<p>$resultado</p>";
+            return $resultado;
 }
 
     ?>

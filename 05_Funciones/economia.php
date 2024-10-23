@@ -1,4 +1,21 @@
+<!--  -->
+
 <?php
+    define("GENERAL", 1.21);
+    define("REDUCIDO", 1.1);
+    define("SUPERREDUCIDO", 0.4);
+function conversorIva($precio,$iva){
+    
+    /* lo almacena en pvp */
+    $pvp = match($iva){
+        "general"  => $precio * GENERAL,
+        "reducido" => $precio * REDUCIDO,
+        "superreducido" => $precio * SUPERREDUCIDO,
+    };
+    return $pvp;
+}
+
+
 function calcularIrpf($salario){
     $salario_final = null;
         
@@ -42,7 +59,7 @@ function calcularIrpf($salario){
             - (($salario - 300000) * 0.47);
     }
 
-    echo "<h1>El salario neto de $salario es $salario_final</h1>";
+    return $salario_final;
 }
 
 

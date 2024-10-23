@@ -11,9 +11,8 @@
         //Importamos las funciones
         require('../05_Funciones/potencias.php');
         require('../05_Funciones/multiplicar.php');
-        require('../05_Funciones/irpf.php');
+        require('../05_Funciones/economia.php');
         require('../05_Funciones/conversor.php');
-        require('../05_Funciones/iva.php');
     ?>
 </head>
 <body>
@@ -66,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h1>Formulario IRPF</h1>
 <form action="" method="post">
         <label for="salario">Salario</label>
-        <input type="number" name="salario" id="salario" placeholder="Salario">
+        <input type="text" name="salario" id="salario" placeholder="Salario">
         <input type="hidden" name="accion" value="formulario_irpf">
         <input type="submit" value="Calcular salario bruto">
 </form>
@@ -74,12 +73,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if($_POST["accion"] == "formulario_irpf"){
-            $salario = $_POST["salario"];
+            $tmp_salario = $_POST["salario"];
 
-            calcularIrpf($salario);
+           if($tmp_salario == ''){
+            echo "Introduzca un valor";
+           }else{
+            if(filter_var($tmp_salario,FILTER_VALIDATE_FLOAT) === FALSE){
+                echo"<p>El salario debe ser un numero</p>";
+            }else{
+                if($tmp_salario < 0){
+                    echo"<p>El salario debe ser mayor a 0</p>";
+                }else{
+                    $salio= $tmp_salario;
+                }
+            }
+           }
+           if(isset($salario)){
+            $resultado = calcularIrpf($salario);
+            echo"<p>El resultado es $resultado</p>";
+        } 
         }
+        
     }
 ?>
+
+
+
+
+
 <!-- Formulario conversor -->
 <h1>Formulario Conversor</h1>
 <form action="" method="post">
@@ -133,9 +154,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($_SERVER["REQUEST_METHOD"] == "POST") {
         
             if($_POST["accion"] == "formulario_iva"){
-                $precio = $_POST["precio"];
-                $iva = $_POST["iva"];
-                conversorIva($precio, $iva);
+                $tmp_precio = $_POST["precio"];
+                $tmp_iva = $_POST["iva"];
+
+                if($_POST["accion"] == "formulario_irpf"){
+                    $tmp_precio = $_POST["salario"];
+        
+                   if($tmp_precio == ''){
+                    echo "Introduzca un valor";
+                   }else{
+                    if(filter_var($tmp_precio,FILTER_VALIDATE_FLOAT) === FALSE){
+                        echo"<p>El salario debe ser un numero</p>";
+                    }else{
+                        if($tmp_precio < 0){
+                            echo"<p>El salario debe ser mayor a 0</p>";
+                        }else{
+                            $salio= $tmp_precio;
+                        }
+                    }
+                   }
+                   if($tmp_iva ==''){
+                    echo"<p>El IVA es obigatorio</p>";
+
+                   }else{
+                        $valores_validos_iva=["general","reducido","superreducido"];
+                        /* Esta funcion solo sirve si hay un select, radiobutton.. algo que tenga número finito. */
+                        if(in_array($tmp_iva,$valores_validos_iva)){
+                            echo"<p>El iva solo puede ser G, R, SP</p>";
+                        }else{
+                            $iva = $tmp_iva;
+                        }
+                    }    
+
+                }
+                
+                if(isset($precio)){
+                    $resultado = calcularIrpf($precio,$iva);
+                    echo"<p>El resultado es $resultado</p>";
+                    } 
             }
                 
     

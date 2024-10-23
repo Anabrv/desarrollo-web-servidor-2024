@@ -44,7 +44,37 @@
                 $salida1 = $_POST["salida1"];
                 $salida2 = $_POST["salida2"];
 
-                convertirTemperatura($grados,$salida1,$salida2);
+                /* Comprobamos que no meten vacío */ 
+                /* El is numeric comprueba que sea un numero */
+                if($grados != ''){
+                    if(is_numeric($temperatura)){
+                        /* Celsius */
+                        
+                        if($salida1 == "C" and $grados >= 273.15){
+                            echo convertirTemperatura($grados,$salida1,$salida2);
+                        } elseif($salida1 == "C" and $grados < 273.15) {
+                            /* Es un else if para diferenciar cual es la tº minima para cada eleccion */
+                            echo"<p>La tº no puede ser menos a 273.15 C</p>";
+                        }
+                        /* Farenheit */
+                        if($salida1 == "F" and $grados >= 0){
+                            echo convertirTemperatura($grados,$salida1,$salida2);
+                        } elseif($salida1 == "F" and $grados < 0) {
+                            echo"<p>La tº no puede ser menos a 0K</p>";
+
+                        /* Kelvin */
+                        }if($salida1 == "K" and $grados >= 459.67){
+                            echo convertirTemperatura($grados,$salida1,$salida2);
+                        } elseif($salida1 == "K" and $grados < 459.67) {
+                            echo"<p>La tº no puede ser menos a 459.67 F</p>";
+                        }
+                    }else{
+                        echo"<p>no es num</p>";
+                    }
+                }else {
+                    echo"<p>falta temp</p>";
+                }
+                
             }
         }
     ?>

@@ -9,6 +9,8 @@
     <?php
         error_reporting(E_ALL);
         ini_set("display_errors",1);
+
+        require('../05_Funciones/potencias.php');
     ?>
 </head>
 <body>
@@ -31,19 +33,73 @@
     2 ELEVADO A 1 = 2 
     3 ELEVADO A 0= 1 */
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-       /*  echo"Entramos al formulario" si hay errores , probamos esto para ver si entra */
-        $base= $_POST["base"];
-        $exponente = $_POST["exponente"];
-        $resultado = 1;
-        for ($i=0; $i < $exponente; $i++) { 
-           $resultado= $resultado *$base;
-           /* si el resultado es 0 no entra en el for
-           
-           2 elevado a 3
-           resultado = 1x2 = 2
-           resultado = 2x2 = 4
-           resultado = 4x2 = 8*/
+      
+       /* variables temporales tmp */ 
+        $tmp_base= $_POST["base"];
+        $tmp_exponente = $_POST["exponente"];
+        
+
+        /* /* /* Validación de la base 
+        if($tmp_base !=''){
+           /* !== -> no es idéntico 
+            if(filter_var($tmp_exponente,FILTER_VALIDATE_INT)!== FALSE){
+               $base= $tmp_base;
+            }else{
+                echo"<p>La base debe ser un numero</p>";
+            }
+        }else{
+            echo"<p>La base es obligatoria</p>";
+        } */
+
+/* forma limpia de hacerlo */
+        if($tmp_base == ''){
+            echo"<p>La base es obligatoria</p>";
+        }else{
+            if(filter_var($tmp_base,FILTER_VALIDATE_INT) === FALSE){
+                echo"<p>La base debe ser un número</p>";
+            }else{
+                $base= $tmp_base;
+            }
         }
+
+        /* if($tmp_exponente !=''){
+            /* filtra por número entero 
+            if(filter_var($tmp_exponente,FILTER_VALIDATE_INT)!== FALSE) {
+               /* El exponente no puede ser 0 
+               if($tmp_exponente >= 0){
+                $exponente= $tmp_exponente;
+               }else{
+                echo"<p>El exponenete deber ser mayor o = a o</p>";
+               }
+            }else{
+                echo"<p>La base debe ser un numero</p>";
+            }
+        }else{
+            echo"<p>La base es obligatoria</p>";
+        }
+ */
+/* Forma limpia de hacerlo */
+        if($tmp_exponente == ''){
+            echo"<p>El exponente es obligatorio</p>";
+        }else{
+            if(filter_var($tmp_exponente,FILTER_VALIDATE_INT) === FALSE){
+                echo"<p>El exponente debe ser un número</p>";
+            }else{
+                $exponente= $tmp_exponente;
+            }
+        }
+                
+        /* El isset te dice si una variable está definida o no */
+        if(isset($base) && isset($exponente)){
+            $resultado = calcularPotencia($base,$exponente);
+            echo"<p>El resultado es $resultado</p>";
+        } 
+
+        
+
+
+          
+        
     }
 
     ?>

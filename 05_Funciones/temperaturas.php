@@ -54,7 +54,7 @@
         
                 }
             }
-            echo "<p>$temperaturaFinal</p>";
+            return $temperaturaFinal;
         }
     
      //en otro fichero nuevo , poner todos los demás formularios y hacerlos con funciones 
